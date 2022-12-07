@@ -1,14 +1,20 @@
 <template>
   <div>
-    <h1>{{response.details.subject}}</h1>
-    <div>{{response.details.ext_2}}</div>
+    <p>コンテンツ一覧ページ</p>
+    <div v-for="n in response.list" :key="n.slug">
+      <nuxt-link :to="`/contents/${n.topics_id}`">
+        {{ n.ymd }} {{ n.subject }}
+      </nuxt-link>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   async asyncData({ $axios }) {
-    return { response: await $axios.$get('/rcms-api/3/service/3') };
+    return {
+      response: await $axios.$get('/rcms-api/3/service '),
+    };
   },
 };
 </script>
